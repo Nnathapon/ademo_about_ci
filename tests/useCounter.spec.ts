@@ -21,8 +21,41 @@ describe('useCounter', () => {
     const { result } = renderHook(() => useCounter());
     act(() => {
       result.current.setVal(5);
+    });
+    act(() => {
       result.current.increment();
     });
     expect(result.current.count).toBe(5);
+  });
+
+  it('should increment multiple times', () => {
+    const { result } = renderHook(() => useCounter());
+    act(() => {
+      result.current.increment();
+      result.current.increment();
+    });
+    expect(result.current.count).toBe(2);
+  });
+
+  it('should handle negative val', () => {
+    const { result } = renderHook(() => useCounter());
+    act(() => {
+      result.current.setVal(-3);
+    });
+    act(() => {
+      result.current.increment();
+    });
+    expect(result.current.count).toBe(-3);
+  });
+
+  it('should handle zero val', () => {
+    const { result } = renderHook(() => useCounter());
+    act(() => {
+      result.current.setVal(0);
+    });
+    act(() => {
+      result.current.increment();
+    });
+    expect(result.current.count).toBe(0);
   });
 });
