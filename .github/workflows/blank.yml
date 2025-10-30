@@ -38,4 +38,4 @@ jobs:
           npm install --global vercel
           vercel pull --yes --token=$VERCEL_TOKEN --environment=production
           vercel build --token=$VERCEL_TOKEN
-          vercel deploy --prebuilt --token=$VERCEL_TOKEN --prod
+          vercel deploy --token=$VERCEL_TOKEN --prod
